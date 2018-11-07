@@ -10,7 +10,61 @@
 <body>
   <!-- 템플릿을 이곳에 작성해주세요 -->
 
-  <div class="root"></div>
+  <!-- 메인시작 -->
+  <template id="main">
+  <div class="main-container">
+    <div class="header-container">
+    <header class="header">
+       <h1 class="logo">mac</h1>
+       <div class="member">
+           <button class="login">로그인</button>
+          <button class="wish-list">장바구니</button>
+      </div>
+    </header>
+  </div>
+    <section class="product-section">
+      <ul class="product-list">
+        <!-- <li class="product-item"></li> -->
+      </ul>
+    </section>
+  </div>
+  </template>
+
+  <!-- 메인템플릿 끝 -->
+
+   <!-- 메인 상품 리스트 디테일 시작 -->
+  <template id="main-product-detail">
+    <li class="product-item">
+      <div class="main-product-detail">
+        <h2 class="title">상품타이틀</h2>
+        <p class="price">상품가격</p>
+      </div>
+    </li>
+  </template>
+  <!-- 메인상품 리스트 디테일 끝 -->
+
+<!-- 메인끝 -->
+
+<!-- 로그인 폼 -->
+  <template id="login-form">
+    <div class="login-section">
+      <form class="login-form">
+        <input type="text" name="username" class="username" placeholder="ID">
+        <input type="password" name="password" class="password" placeholder="PASSWORD">
+        <button>로그인</button>
+      </form>
+    </div>
+  </template>
+
+ <!-- 로그인 폼 끝 -->
+
+
+
+  <div class="root">
+
+
+
+  </div>
   <script src="./index.js"></script>
 </body>
 </html>
