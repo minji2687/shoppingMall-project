@@ -113,6 +113,9 @@ width:70px
 .product-item:hover{
   border:1px solid #353535;
 }
+.main-product-detail{
+ padding:6%;
+}
 .main-product-detail .title ,.main-product-detail .price{
   text-align:center;
   line-height: 3.2;
@@ -122,4 +125,13 @@ width:70px
   font-size:1rem;
   font-weight:bold;
    color:#b19683;
+}
+.main-product-detail .product_img{
+  width:100%;
+  height:350px;
+  background:#fff;
+  overflow:hidden;
+}
+.product_img img{
+  width:100%;
 }
