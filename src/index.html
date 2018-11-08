@@ -13,15 +13,7 @@
   <!-- 메인시작 -->
   <template id="main">
   <div class="main-container">
-    <div class="header-container">
-    <header class="header">
-       <h1 class="logo">mac</h1>
-       <div class="member">
-           <button class="login">로그인</button>
-          <button class="wish-list">장바구니</button>
-      </div>
-    </header>
-  </div>
+
     <section class="product-section">
       <ul class="product-list">
         <!-- <li class="product-item"></li> -->
@@ -29,6 +21,20 @@
     </section>
   </div>
   </template>
+
+<!-- 헤더 -->
+<template id="main-header"></template>
+  <div class="header-container">
+    <header class="header">
+    <h1 class="logo">mac</h1>
+    <div class="member">
+    <button class="login">로그인</button>
+    <button class="wish-list">장바구니</button>
+    </div>
+    </header>
+  </div>
+
+<!-- 헤더끝 -->
 
   <!-- 메인템플릿 끝 -->
 
@@ -46,9 +52,8 @@
   </template>
   <!-- 메인상품 리스트 디테일 끝 -->
 
-<!-- 메인끝 -->
 
-<!-- 로그인 폼 -->
+  <!-- 로그인 폼 -->
   <template id="login-form">
     <div class="login-section">
       <form class="login-form">
@@ -58,8 +63,28 @@
       </form>
     </div>
   </template>
+  <!-- 로그인 폼 끝 -->
+  <!-- 메인끝 -->
 
- <!-- 로그인 폼 끝 -->
+
+
+ <!--상세페이지 -->
+ <template id="product-detail-page">
+   <div class="product-detail-page">
+      <div class="inner-detail-page">
+        <div class="detail-page-product-img">
+         <img>
+        </div>
+
+         <div class="product-explanation">
+            <h2 class="detail-page-title">상품타이틀</h2>
+            <p class="detail-page-price">상품가격</p>
+            <p class="detail-text">상품설명</p>
+        </div>
+       </div>
+   </div>
+ </template>
+ <!-- 상세페이지 끝 -->
 
 
 

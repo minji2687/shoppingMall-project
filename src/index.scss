@@ -16,6 +16,7 @@ button{
   border:0;
 }
 .header-container{
+  z-index:999;
   width:100%;
   border-bottom:1px solid #ececec;
 }
@@ -91,7 +92,7 @@ width:70px
 // 로그인 스타일 끝
 
 
-
+//메인 상품리스트
 .product-section{
   max-width:1200px;
   margin:400px auto 0;
@@ -134,4 +135,40 @@ width:70px
 }
 .product_img img{
   width:100%;
+}
+//메인 상품리스트 스타일
+
+//상품 디테일 페이지
+.product-detail-page{
+
+  width:100%;
+  height:100%;
+ background:#fff;
+}
+
+.inner-detail-page{
+  width:100%;
+  max-width:1200px;
+  margin:180px auto 0;
+
+}
+.detail-page-product-img{
+  float:left;
+  width:45%;
+  height:350px;
+  background:#ececec;
+  overflow:hidden;
+}
+.product-explanation{
+  float:left;
+  padding-left: 5%;
+  line-height:2.1;
+}
+
+
+.detail-page-title{
+  font-size:1.2rem;
+  padding-bottom:8%;
+  border-bottom:1px solid #353535;
+  margin-bottom:35px;
 }
