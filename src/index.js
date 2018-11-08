@@ -18,12 +18,18 @@ api.interceptors.request.use(function (config) {
 const templates = {
   loginForm: document.querySelector("#login-form").content,
   MainEl: document.querySelector("#main").content,
-  HeaderEl: document.querySelector("#main-header").content,
   MainProductDetail: document.querySelector("#main-product-detail").content,
-  ProductDetailPage: document.querySelector("#product-detail-page").content
+  ProductDetailPage: document.querySelector("#product-detail-page").content,
+  Cart: document.querySelector("#cart").content
 };
 
 const rootEl = document.querySelector('.root')
+
+// fragment를 받아서 layout에 넣은 다음 rootEl에 그려주는 함수
+
+
+
+
 
 // 페이지 그리는 함수 작성 순서
 // 1. 템플릿 복사
@@ -46,52 +52,22 @@ async function drawMain(){
   const frag = document.importNode(templates.MainEl, true)
 
   // 2. 요소 선택
+
+
   //로그인 버튼 선택
 
 
   // 3. 필요한 데이터 불러오기
   MainProductDetail();
-  drawHeader();
 
 
   // rootEl.textContent = ''
   rootEl.appendChild(frag)
 
 
+
+
   }
-
-
-async function drawHeader() {
-  // 1. 템플릿 복사
-  //메인 템플릿 복사
-
-  const frag = document.importNode(templates.HeaderEl, true);
-
-  // 2. 요소 선택
-  //로그인 버튼 선택
-  const loginButtonEl = frag.querySelector(".login");
-
-
-  // 3. 필요한 데이터 불러오기
-
-  // 4. 내용 채우기
-  // loginButtonEl.addEventListener("click", e => {
-  //   e.preventDefault();
-  //   console.log("클릭");
-  //   drawLoginForm();
-
-  // });
-
-
-
-  rootEl.textContent = ''
-  rootEl.appendChild(frag)
-
-
-
-}
-
-  //메인끝
 
 
 
@@ -126,7 +102,10 @@ async function drawLoginForm() {
 
 //메인 리스트 세부사항
 
-async function MainProductDetail() {
+async function MainProductDetail(category) {
+
+  console.log(category);
+
   // 1. 템플릿 복사
   const frag = document.importNode(templates.MainEl, true);
 
@@ -136,17 +115,26 @@ async function MainProductDetail() {
 
    // 3. 필요한 데이터 불러오기
   //상품 데이터 불러오기
+  const params = {
+    _embed: 'options'
+  }
+  if (category) {
+    params.category = category
+  }
+
   const { data: productList } = await api.get("/products", {
-    params: {
-      _embed: "options",
-    }
+    params
   });
+
+
 
   // 4. 내용 채우기
   //상품 리스트 가져오기
   for (const productItem of productList ) {
-    //li리스트 템플릿 복사
+
     const frag = document.importNode(templates.MainProductDetail, true);
+     //li리스트 템플릿 복사
+    const productListEl = frag.querySelector(".product-item")
 
     //li 리스트 안에 요소 선택
     const mainProductImgEl = frag.querySelector(".product_img>img");
@@ -162,18 +150,17 @@ async function MainProductDetail() {
     mainProductImgEl.setAttribute("src",productItem.mainImgUrl);
 
 
+    productListEl.addEventListener("click", e => {
+
+      ProductDetailPage(productItem.id);
+    });
 
     mainProductListEl.appendChild(frag);
 
 
-    mainProductListEl.addEventListener("click", e => {
-
-      ProductDetailPage(productItem.id);
-
-    });
-
-
   }
+
+
 
 
   rootEl.textContent = "";
@@ -185,6 +172,8 @@ async function MainProductDetail() {
 
 //상세페이지 띄우기
 async function ProductDetailPage(productId) {
+  console.log(productId)
+
   // 1. 템플릿 복사
   const frag = document.importNode(templates.ProductDetailPage, true);
 
@@ -203,6 +192,9 @@ async function ProductDetailPage(productId) {
     const titleEl = frag.querySelector(".detail-page-title");
     const priceEl = frag.querySelector(".detail-page-price");
     const descriptionEl = frag.querySelector(".detail-text");
+    const cartBtnEl = frag.querySelector(".cart-btn");
+
+
 
   titleEl.textContent = productData.title;
   priceEl.textContent = productData.options[0].price;
@@ -213,10 +205,102 @@ async function ProductDetailPage(productId) {
 
 
 
+  // //카트를 눌렀을 때
+  // cartBtnEl.addEventListener("click", async => {
+
+
+  //   await api.post(`/cartItems/" + ${productId} + cartItems`,{
+
+  //   });
+  //   console.log("CartData");
+
+  //   cart();
+
+  // });
+
 
   rootEl.textContent = "";
   rootEl.appendChild(frag);
 }
+
+
+//카트페이지 띄우기
+// async function cart() {
+
+//   console.log(productId);
+
+//   // 1. 템플릿 복사
+//   const frag = document.importNode(templates.Cart, true);
+
+//   // 3. 필요한 데이터 불러오기
+
+//   //상품 데이터 보내기
+//   const { data: productData } = await api.post("/cartItems/" + productId, {
+//     params: {
+//       _embed: "options"
+//     }
+//   });
+
+//   //li 리스트 안에 요소 선택
+//   const cartPageProductImgEl = frag.querySelector(".cart-product-img>img");
+//   const cartTitleEl = frag.querySelector(".cart-page-title");
+//   const cartPriceEl = frag.querySelector(".cart-page-price");
+//   // const cartDescriptionEl = frag.querySelector(".cart-text");
+
+
+//   cartTitleEl.textContent = productData.title;
+//   cartPriceEl.textContent = productData.options[0].price;
+//   // cartDescriptionEl.textContent = productData.description;
+//   // console.log(productItem);
+
+
+
+//   cartPageProductImgEl.setAttribute("src", productData.mainImgUrl);
+
+//   // BuyBtnEl.addEventListener("click", e => {
+//   //   e.preventDefault();
+//   //   console.log("클릭");
+//   //   cart();
+//   // });
+
+//   rootEl.textContent = "";
+//   rootEl.appendChild(frag);
+// }
+
+
+
+// 헤더 관련 작업
+
+const loginButtonEl = document.querySelector(".login");
+console.log(loginButtonEl)
+console.log(templates.HeaderEl)
+
+// 3. 필요한 데이터 불러오기
+
+// 4. 내용 채우기
+loginButtonEl.addEventListener("click", e => {
+  e.preventDefault();
+  console.log("클릭");
+  drawLoginForm();
+
+});
+
+//   카테고리 관련 작업
+
+const caseEl = document.querySelector(".case-item");
+const cableEl = document.querySelector(".cable-item");
+const othersEl = document.querySelector(".others-item");
+
+caseEl.addEventListener("click", e => {
+  MainProductDetail("case");
+});
+cableEl.addEventListener("click", e => {
+  MainProductDetail("cable");
+});
+othersEl.addEventListener("click", e => {
+  MainProductDetail("others");
+});
+
 
 
 

@@ -68,7 +68,7 @@ width:70px
   left:50%;
   transform:translate(-50%,-50%);
   margin:0 auto;
-    width: 23%;
+    width: 43%;
     height: 50vh;
   background:#fff;
   padding:7%;
@@ -157,18 +157,110 @@ width:70px
   width:45%;
   height:350px;
   background:#ececec;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
   overflow:hidden;
+  text-align:center;
+}
+.detail-page-product-img img{
+  width:85%;
+
 }
 .product-explanation{
   float:left;
   padding-left: 5%;
   line-height:2.1;
 }
-
+.detail-page-price{
+  font-size:1rem;
+  font-weight:bold;
+   color:#b19683;
+}
 
 .detail-page-title{
   font-size:1.2rem;
   padding-bottom:8%;
   border-bottom:1px solid #353535;
   margin-bottom:35px;
+}
+.category-list{
+  // width:300px;
+  display:flex;
+  justify-content:center;
+}
+.category-list li{
+  width:10%;
+  cursor: pointer;
+}
+
+
+//징바구니 기능css
+.cart-btn{
+  font-size: 1rem;
+  margin-top: 35px;
+  width:100%;
+  height:50px;
+  color:#fff;
+  background:#090909;
+  font-weight: bold;
+}
+
+
+//상품 디테일 페이지
+.cart{
+  width:100%;
+  height:100%;
+ background:#fff;
+
+}
+
+.cart-inner{
+  width:100%;
+  max-width:1200px;
+  margin:180px auto 0;
+
+}
+.cart-product-img{
+  float:left;
+  width:30%;
+  height:300px;
+  background:#ececec;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+  overflow:hidden;
+  text-align:center;
+}
+.cart-product-img img{
+  width:85%;
+
+}
+.cart-product-explanation{
+  float:left;
+  padding-left: 5%;
+  line-height:2.1;
+}
+.cart-page-price{
+  font-size:1rem;
+  font-weight:bold;
+   color:#b19683;
+}
+
+.cart-page-title{
+  font-size:1.2rem;
+  padding-bottom:8%;
+  border-bottom:1px solid #353535;
+  margin-bottom:35px;
+}
+
+.category-list li{
+  width:10%;
+  cursor: pointer;
+}
+
+
+
+
+//카테고리 css
+.category-list{
+  // width:300px;
+  display:flex;
+  justify-content:center;
 }

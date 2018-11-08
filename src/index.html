@@ -22,19 +22,6 @@
   </div>
   </template>
 
-<!-- 헤더 -->
-<template id="main-header"></template>
-  <div class="header-container">
-    <header class="header">
-    <h1 class="logo">mac</h1>
-    <div class="member">
-    <button class="login">로그인</button>
-    <button class="wish-list">장바구니</button>
-    </div>
-    </header>
-  </div>
-
-<!-- 헤더끝 -->
 
   <!-- 메인템플릿 끝 -->
 
@@ -50,9 +37,19 @@
       </div>
     </li>
   </template>
+
   <!-- 메인상품 리스트 디테일 끝 -->
 
+  <!-- 카테고리 -->
+  <!-- <template id="category-list"> -->
 
+  <!-- </template> -->
+
+    <template id="category-item">
+      <li class="category-item"></li>
+    </template>
+
+  <!-- 카테고리 끝-->
   <!-- 로그인 폼 -->
   <template id="login-form">
     <div class="login-section">
@@ -80,16 +77,69 @@
             <h2 class="detail-page-title">상품타이틀</h2>
             <p class="detail-page-price">상품가격</p>
             <p class="detail-text">상품설명</p>
+            <form class="cart-form">
+              <label>
+                옵션
+                <select name="option" class="option" required>
+                  <option value="" disabled selected>옵션을 선택하세요</option>
+                </select>
+              </label>
+              <label>
+                수량
+                <input type="number" name="quantity" class="quantity" value="1" min="1" required>
+              </label>
+              <button class="cart-btn">ADD TO CART</button>
+
+            </form>
         </div>
        </div>
    </div>
  </template>
+
+  <template id="cart">
+    <div class="cart">
+      <div class="cart-inner">
+        <div class="cart-product-img">
+          <img>
+        </div>
+
+        <div class="cart-product-explanation">
+          <h2 class="cart-page-title">상품타이틀</h2>
+          <p class="cart-page-price">상품가격</p>
+
+
+          <button class="buy">BUY IT NOW</button>
+
+        </div>
+      </div>
+    </div>
+  </template>
  <!-- 상세페이지 끝 -->
 
 
-
+  <div class="header-container">
+    <header class="header">
+      <h1 class="logo">mac</h1>
+      <div class="member">
+        <button class="login">로그인</button>
+        <button class="wish-list">장바구니</button>
+      </div>
+    </header>
+  </div>
+  <div id="category">
+    <ul class="category-list">
+      <li class="case-item">
+        case
+      </li>
+      <li class="cable-item">
+        cable
+      </li>
+      <li class="others-item">
+        others
+      </li>
+    </ul>
+  </div>
   <div class="root">
-
 
 
   </div>

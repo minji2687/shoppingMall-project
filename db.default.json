@@ -22,50 +22,50 @@
     },
     {
       "id": 2,
-      "category": "pants",
-      "title": "소프트 밴딩 데님 팬츠",
-      "description": "놀라운 신축성과 믿기 힘든 편안함",
-      "mainImgUrl": "https://cdn.glitch.com/1759d36e-fe76-4527-875b-d091825e192e%2Fskin1.jpg?1541594522916",
+      "category": "cable",
+      "title": "지모 레더 스티치 25cm 1m Type-C 라이트닝 케이블",
+      "description": "빈티지한 분위기를 원하는 당신을 위해 리얼가죽과 견주어도 뒤지지 않는 레더 케이블",
+      "mainImgUrl": "https://cdn.glitch.com/1759d36e-fe76-4527-875b-d091825e192e%2Fc.jpg?1541594935631",
       "detailImgUrls": [
         "https://cdn.glitch.com/fd9f7129-fde3-439e-b9e4-75bf96e16da0%2F4.jpg?1541520217591"
       ]
     },
     {
       "id": 3,
-      "category": "pants",
-      "title": "소프트 밴딩 데님 팬츠",
-      "description": "놀라운 신축성과 믿기 힘든 편안함",
-      "mainImgUrl": "https://cdn.glitch.com/1759d36e-fe76-4527-875b-d091825e192e%2Fh.jpg?1541594952600",
+      "category": "others",
+      "title": "Baseus UFO Qi 무선 충전 패드",
+      "description": "케이블 없이 무선충전기에 올려놓고 쉽게 충전하세요",
+      "mainImgUrl": "https://cdn.glitch.com/1759d36e-fe76-4527-875b-d091825e192e%2Fo3.jpg?1541658837200",
       "detailImgUrls": [
         "https://cdn.glitch.com/fd9f7129-fde3-439e-b9e4-75bf96e16da0%2F4.jpg?1541520217591"
       ]
     },
     {
       "id": 4,
-      "category": "pants",
-      "title": "소프트 밴딩 데님 팬츠",
-      "description": "놀라운 신축성과 믿기 힘든 편안함",
-      "mainImgUrl": "https://cdn.glitch.com/1759d36e-fe76-4527-875b-d091825e192e%2Fc3.jpg?1541594938801",
+      "category": "cable",
+      "title": "VIEWSEE 3.5파이 라이트닝 듀얼 젠더 어댑터",
+      "description": "음악 감상고 충전을 동시에 ! 듀얼젠더",
+      "mainImgUrl": "https://cdn.glitch.com/1759d36e-fe76-4527-875b-d091825e192e%2F%E3%85%8A4.jpg?1541658833861",
       "detailImgUrls": [
         "https://cdn.glitch.com/fd9f7129-fde3-439e-b9e4-75bf96e16da0%2F4.jpg?1541520217591"
       ]
     },
     {
       "id": 5,
-      "category": "pants",
-      "title": "소프트 밴딩 데님 팬츠",
-      "description": "놀라운 신축성과 믿기 힘든 편안함",
-      "mainImgUrl": "https://cdn.glitch.com/fd9f7129-fde3-439e-b9e4-75bf96e16da0%2F3.jpg?1541520216721",
+      "category": "othors",
+      "title": "NATIVE UNION 라이트닝 충전독 거치대",
+      "description": "매칭컬러의 라이트닝 케이블이 포함된 가장 가벼운 충전독",
+      "mainImgUrl": "https://cdn.glitch.com/1759d36e-fe76-4527-875b-d091825e192e%2Fo5.jpg?1541659252361",
       "detailImgUrls": [
         "https://cdn.glitch.com/fd9f7129-fde3-439e-b9e4-75bf96e16da0%2F4.jpg?1541520217591"
       ]
     },
     {
       "id": 6,
-      "category": "pants",
-      "title": "소프트 밴딩 데님 팬츠",
-      "description": "놀라운 신축성과 믿기 힘든 편안함",
-      "mainImgUrl": "https://cdn.glitch.com/fd9f7129-fde3-439e-b9e4-75bf96e16da0%2F3.jpg?1541520216721",
+      "category": "case",
+      "title": "엘라고 에어팟 방수 케이스",
+      "description": "생활방수 기능을 제공하는 실리콘 소재의 에어팟 케이스",
+      "mainImgUrl": "https://cdn.glitch.com/1759d36e-fe76-4527-875b-d091825e192e%2Fc1.jpg?1541658831682",
       "detailImgUrls": [
         "https://cdn.glitch.com/fd9f7129-fde3-439e-b9e4-75bf96e16da0%2F4.jpg?1541520217591"
       ]
@@ -87,8 +87,8 @@
     {
       "id": 3,
       "productId": 3,
-      "title": "Medium",
-      "price": 60000
+      "title": "white",
+      "price": 22000
     },
     {
       "id": 4,
@@ -100,13 +100,13 @@
       "id": 5,
       "productId": 5,
       "title": "Large",
-      "price": 66000
+      "price": 18900
     },
     {
       "id": 6,
       "productId": 6,
       "title": "Large",
-      "price": 66000
+      "price": 19900
     }
   ],
   "cartItems": [
