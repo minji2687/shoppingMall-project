@@ -172,7 +172,7 @@ async function MainProductDetail(category) {
 
 //상세페이지 띄우기
 async function ProductDetailPage(productId) {
-  console.log(productId)
+
 
   // 1. 템플릿 복사
   const frag = document.importNode(templates.ProductDetailPage, true);
@@ -186,47 +186,62 @@ async function ProductDetailPage(productId) {
     }
   });
 
-
     //li 리스트 안에 요소 선택
     const detailPageProductImgEl = frag.querySelector(".detail-page-product-img>img");
     const titleEl = frag.querySelector(".detail-page-title");
     const priceEl = frag.querySelector(".detail-page-price");
     const descriptionEl = frag.querySelector(".detail-text");
     const cartBtnEl = frag.querySelector(".cart-btn");
+    const selectEl = frag.querySelector('.option > option');
+    const quantityEl = frag.querySelector('.quantity');
 
 
-
+  //데이터 넣어주기
+  console.log(productData);
   titleEl.textContent = productData.title;
   priceEl.textContent = productData.options[0].price;
   descriptionEl.textContent = productData.description;
+  selectEl.textContent = productData.options[0].title;
+
+
+
     // console.log(productItem);
 
   detailPageProductImgEl.setAttribute("src", productData.mainImgUrl);
 
 
 
-  // //카트를 눌렀을 때
-  // cartBtnEl.addEventListener("click", async => {
+  // 카트를 눌렀을 때
+  // 5. 이벤트 리스너 등록하기
+  cartBtnEl.addEventListener("click", async e => {
+
+// 페이지 그리는 함수 작성 순서
+// 2. 요소 선택
+    const optionId = selectEl.value;
+    const quantity = quantityEl.value;
+    console.log(quantityEl.value);
+
+// 3. 필요한 데이터 불러오기
 
 
-  //   await api.post(`/cartItems/" + ${productId} + cartItems`,{
+    await api.post('/cartItems', {
+      optionId,
+      quantity,
+      ordered: false
+    })
+    // cart();
 
-  //   });
-  //   console.log("CartData");
-
-  //   cart();
-
-  // });
-
-
+  });
   rootEl.textContent = "";
   rootEl.appendChild(frag);
+
+
+
 }
 
 
-//카트페이지 띄우기
-// async function cart() {
-
+// // 카트페이지 띄우기
+// async function cart(productId) {
 //   console.log(productId);
 
 //   // 1. 템플릿 복사
@@ -247,13 +262,10 @@ async function ProductDetailPage(productId) {
 //   const cartPriceEl = frag.querySelector(".cart-page-price");
 //   // const cartDescriptionEl = frag.querySelector(".cart-text");
 
-
 //   cartTitleEl.textContent = productData.title;
 //   cartPriceEl.textContent = productData.options[0].price;
 //   // cartDescriptionEl.textContent = productData.description;
 //   // console.log(productItem);
-
-
 
 //   cartPageProductImgEl.setAttribute("src", productData.mainImgUrl);
 
