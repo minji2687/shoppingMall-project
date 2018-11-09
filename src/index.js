@@ -20,7 +20,9 @@ const templates = {
   MainEl: document.querySelector("#main").content,
   MainProductDetail: document.querySelector("#main-product-detail").content,
   ProductDetailPage: document.querySelector("#product-detail-page").content,
-  Cart: document.querySelector("#cart").content
+  Cart: document.querySelector("#cart").content,
+  cartItem: document.querySelector("#cart-item").content
+
 };
 
 const rootEl = document.querySelector('.root')
@@ -202,12 +204,7 @@ async function ProductDetailPage(productId) {
   priceEl.textContent = productData.options[0].price;
   descriptionEl.textContent = productData.description;
   selectEl.textContent = productData.options[0].title;
-
-
-
-    // console.log(productItem);
-
-  detailPageProductImgEl.setAttribute("src", productData.mainImgUrl);
+detailPageProductImgEl.setAttribute("src", productData.mainImgUrl);
 
 
 
@@ -219,17 +216,23 @@ async function ProductDetailPage(productId) {
 // 2. 요소 선택
     const optionId = selectEl.value;
     const quantity = quantityEl.value;
-    console.log(quantityEl.value);
-
+    const price = productData.options[0].price;
+    const title = productData.options[0].title;
+    const image =productData.mainImgUrl;
 // 3. 필요한 데이터 불러오기
 
 
-    await api.post('/cartItems', {
+  const res =  await api.post('/cartItems', {
+      title,
+      image,
+      price,
       optionId,
       quantity,
       ordered: false
     })
-    // cart();
+
+
+    cart();
 
   });
   rootEl.textContent = "";
@@ -240,44 +243,56 @@ async function ProductDetailPage(productId) {
 }
 
 
-// // 카트페이지 띄우기
-// async function cart(productId) {
-//   console.log(productId);
+// 카트페이지 띄우기
+async function cart() {
 
-//   // 1. 템플릿 복사
-//   const frag = document.importNode(templates.Cart, true);
 
-//   // 3. 필요한 데이터 불러오기
 
-//   //상품 데이터 보내기
-//   const { data: productData } = await api.post("/cartItems/" + productId, {
-//     params: {
-//       _embed: "options"
-//     }
-//   });
+      // 1. 템플릿 복사
+      const frag = document.importNode(templates.Cart, true);
 
-//   //li 리스트 안에 요소 선택
-//   const cartPageProductImgEl = frag.querySelector(".cart-product-img>img");
-//   const cartTitleEl = frag.querySelector(".cart-page-title");
-//   const cartPriceEl = frag.querySelector(".cart-page-price");
-//   // const cartDescriptionEl = frag.querySelector(".cart-text");
+      const cartList = frag.querySelector(".cart-list")
 
-//   cartTitleEl.textContent = productData.title;
-//   cartPriceEl.textContent = productData.options[0].price;
-//   // cartDescriptionEl.textContent = productData.description;
-//   // console.log(productItem);
 
-//   cartPageProductImgEl.setAttribute("src", productData.mainImgUrl);
+      // 3. 필요한 데이터 불러오기
 
-//   // BuyBtnEl.addEventListener("click", e => {
-//   //   e.preventDefault();
-//   //   console.log("클릭");
-//   //   cart();
-//   // });
+      const { data: cartItemList } = await api.get("/cartItems", {
+        params: {
+          ordered: false,
+        }
+      });
 
-//   rootEl.textContent = "";
-//   rootEl.appendChild(frag);
-// }
+      //데이터 넣어주기
+      for(const cartItem of cartItemList){
+        console.log(cartItem)
+          // 페이지 그리는 함수 작성 순서
+    // 1. 템플릿 복사
+        const frag = document.importNode(templates.cartItem, true)
+
+    // 2. 요소 선택
+        const cartItemEl = frag.querySelector('.cart-item')
+        const cartImg = frag.querySelector(".cart-product-img>img");
+        const cartTitle = frag.querySelector(".cart-page-title");
+        const cartPrice = frag.querySelector(".cart-page-price");
+    // 3. 필요한 데이터 불러오기-없음
+    // 4. 내용 채우기
+        cartImg.setAttribute("src", cartItem.image);
+        cartTitle.textContent = cartItem.title
+        cartPrice.textContent = cartItem.price
+    // 5. 이벤트 리스너 등록하기
+    // BuyBtnEl.addEventListener("click", e => {
+      //   e.preventDefault();
+      //   console.log("클릭");
+      //   cart();
+      // });
+    // 6. 템플릿을 문서에 삽입
+        cartList.appendChild(cartItemEl)
+
+      }
+
+      rootEl.textContent = "";
+      rootEl.appendChild(frag);
+}
 
 
 
@@ -317,4 +332,4 @@ othersEl.addEventListener("click", e => {
 
 
 drawMain();
-
+// cart()
