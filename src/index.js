@@ -290,13 +290,13 @@ async function cart() {
       //       console.log("클릭");
       //       cart();
       // });
-  //  deleteBtn.addEventListener("click", e => {
-  //       e.preventDefault();
+   deleteBtn.addEventListener("click", async e => {
+        e.preventDefault();
 
-  //          await api.delete(`/cartItems/${cartItems.id}`)
-  //           console.log("클릭");
-  //           cart();
-  //     });
+           await api.delete(`/cartItems/${cartItem.id}`)
+            // console.log("클릭");
+            cart();
+      });
 
 
     // 6. 템플릿을 문서에 삽입
