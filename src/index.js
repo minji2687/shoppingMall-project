@@ -21,7 +21,9 @@ const templates = {
   MainProductDetail: document.querySelector("#main-product-detail").content,
   ProductDetailPage: document.querySelector("#product-detail-page").content,
   Cart: document.querySelector("#cart").content,
-  cartItem: document.querySelector("#cart-item").content
+  cartItem: document.querySelector("#cart-item").content,
+  // orderList:document.querySelector("#order-list").content,
+  // orderItem:document.querySelector("#order-item").content
 
 };
 
@@ -245,13 +247,11 @@ detailPageProductImgEl.setAttribute("src", productData.mainImgUrl);
 
 // 카트페이지 띄우기
 async function cart() {
-
-
-
       // 1. 템플릿 복사
       const frag = document.importNode(templates.Cart, true);
 
       const cartList = frag.querySelector(".cart-list")
+      const orderBtnEl= frag.querySelector(".order-button")
 
 
       // 3. 필요한 데이터 불러오기
@@ -274,24 +274,60 @@ async function cart() {
         const cartImg = frag.querySelector(".cart-product-img>img");
         const cartTitle = frag.querySelector(".cart-page-title");
         const cartPrice = frag.querySelector(".cart-page-price");
+        const deleteBtn = frag.querySelector(".deleteBtn");
+
     // 3. 필요한 데이터 불러오기-없음
     // 4. 내용 채우기
         cartImg.setAttribute("src", cartItem.image);
         cartTitle.textContent = cartItem.title
         cartPrice.textContent = cartItem.price
     // 5. 이벤트 리스너 등록하기
-    // BuyBtnEl.addEventListener("click", e => {
+    //데이터 삭제하기
+      //   deleteBtn.addEventListener("click", e => {
       //   e.preventDefault();
-      //   console.log("클릭");
-      //   cart();
+      //
+      //      await api.delete(`/cartItems/${cartItems.id}`)
+      //       console.log("클릭");
+      //       cart();
       // });
+  //  deleteBtn.addEventListener("click", e => {
+  //       e.preventDefault();
+
+  //          await api.delete(`/cartItems/${cartItems.id}`)
+  //           console.log("클릭");
+  //           cart();
+  //     });
+
+
     // 6. 템플릿을 문서에 삽입
         cartList.appendChild(cartItemEl)
 
       }
+      // orderBtnEl.addEventListener("click", e=>{
+      //   order()
+      //   console.log(orderBtnEl)
+      // })
 
       rootEl.textContent = "";
       rootEl.appendChild(frag);
+}
+
+//주문하기
+async function order(){
+
+  // 페이지 그리는 함수 작성 순서
+  // 1. 템플릿 복사
+  const frag = document.importNode(template.orderList,true)
+// 2. 요소 선택
+  const orderList = frag.querySelector(".order-list");
+// 3. 필요한 데이터 불러오기
+  const res = await api.post('/orders', {
+
+  })
+// 4. 내용 채우기
+// 5. 이벤트 리스너 등록하기
+// 6. 템플릿을 문서에 삽입
+
 }
 
 
