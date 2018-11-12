@@ -22,8 +22,8 @@ const templates = {
   ProductDetailPage: document.querySelector("#product-detail-page").content,
   Cart: document.querySelector("#cart").content,
   cartItem: document.querySelector("#cart-item").content,
-  // orderList:document.querySelector("#order-list").content,
-  // orderItem:document.querySelector("#order-item").content
+  orderList:document.querySelector("#order-list").content,
+  orderItem:document.querySelector("#order-item").content
 
 };
 
@@ -303,10 +303,14 @@ async function cart() {
         cartList.appendChild(cartItemEl)
 
       }
-      // orderBtnEl.addEventListener("click", e=>{
-      //   order()
-      //   console.log(orderBtnEl)
-      // })
+      orderBtnEl.addEventListener("click", async e =>{
+        // order()
+        const { data : { id: orderId } } = await api.post("/orders", {
+          orderTime: Date.now()
+
+        });
+        console.log(orderId);
+      })
 
       rootEl.textContent = "";
       rootEl.appendChild(frag);
@@ -317,16 +321,44 @@ async function order(){
 
   // 페이지 그리는 함수 작성 순서
   // 1. 템플릿 복사
-  const frag = document.importNode(template.orderList,true)
+  const frag = document.importNode(templates.orderList, true);
 // 2. 요소 선택
   const orderList = frag.querySelector(".order-list");
 // 3. 필요한 데이터 불러오기
-  const res = await api.post('/orders', {
-
-  })
+  const { data: orderListData } = await api.get("/orders", {
+    params: {
+      _sort: "id",
+      // _order: 'desc',
+      _embed: "cartItems"
+    }
+  });
 // 4. 내용 채우기
+
+  const params = new URLSearchParams()
+for(const orderItemData of orderListData){
+  const frag = document.importNode(templates.orderItem,true);
+
+  const orderIdEl = frag.querySelector('.order-id')
+  const orderTitle = frag.querySelector('.order-title')
+  const orderPice = frag.querySelector(".order-item-price");
+  const orderTime = frag.querySelector('.order-time')
+  const orderImg = frag.querySelector('.order-img')
+  console.log(orderItemData)
+  // orderIdEl.textContent = orderItemData.title
+  orderTitle.textContent = orderItemData.title;
+  // orderPrice.textContent = orderItemData.price;
+  orderTime.textContent = orderItemData.orderTime;
+  // orderImgEl.setAttribute("src", orderItemData.mainImgUrl);
+
+ orderList.appendChild(frag)
+}
+
+
 // 5. 이벤트 리스너 등록하기
+
 // 6. 템플릿을 문서에 삽입
+
+  rootEl.appendChild(frag);
 
 }
 
@@ -369,3 +401,4 @@ othersEl.addEventListener("click", e => {
 
 drawMain();
 // cart()
+// order()
